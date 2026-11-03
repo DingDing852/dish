@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dish Soap Millionaire | 洗碗界傳奇</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app">
+        <header class="top-nav">
+            <div class="brand">
+                <span class="icon">🧼</span>
+                <h1 data-i18n="gameTitle">Dish Soap Millionaire</h1>
+            </div>
+            <div class="nav-controls">
+                <button id="stealth-btn" class="nav-btn" data-i18n="stealthToggle">Stealth (Tab)</button>
+                <button id="lang-btn" class="nav-btn">繁體中文</button>
+            </div>
+        </header>
+
+        <main class="main-layout">
+            <section class="kitchen-panel">
+                <div class="stats-card glass">
+                    <div class="currency-group">
+                        <div class="currency-item">
+                            <span class="c-icon">🧽</span>
+                            <div>
+                                <div class="c-label" data-i18n="cleanPlates">Clean Plates</div>
+                                <div id="plates-display" class="c-value">0</div>
+                            </div>
+                        </div>
+                        <div class="currency-item">
+                            <span class="c-icon">🪙</span>
+                            <div>
+                                <div class="c-label" data-i18n="bubbleCoins">Bubble Coins</div>
+                                <div id="coins-display" class="c-value">$0.00</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cps-meter">
+                        <span data-i18n="rateLabel">Earnings:</span>
+                        <span id="cps-display">0.0</span> <span data-i18n="perSec">/sec</span>
+                    </div>
+                </div>
+
+                <div class="heat-bar-container glass">
+                    <div class="heat-label-row">
+                        <span data-i18n="foamHeat">Foam Heat</span>
+                        <span id="heat-status" class="heat-status">0%</span>
+                    </div>
+                    <div class="heat-track">
+                        <div id="heat-fill" class="heat-fill"></div>
+                    </div>
+                </div>
+
+                <div class="canvas-wrapper glass">
+                    <canvas id="game-canvas"></canvas>
+                    <div id="frenzy-banner" class="frenzy-overlay hidden" data-i18n="frenzyMode">FRENZIED SCRUBBING 3X!</div>
+                </div>
+            </section>
+
+            <aside class="shop-panel glass">
+                <div class="shop-tabs">
+                    <button class="tab-btn active" data-tab="helpers" data-i18n="tabHelpers">Assistants & Tech</button>
+                    <button class="tab-btn" data-tab="venues" data-i18n="tabVenues">Venues</button>
+                    <button class="tab-btn" data-tab="prestige" data-i18n="tabPrestige">Franchise</button>
+                </div>
+
+                <div class="tab-content active" id="tab-helpers">
+                    <div id="helpers-list" class="upgrades-list"></div>
+                </div>
+
+                <div class="tab-content" id="tab-venues">
+                    <div id="venues-list" class="upgrades-list"></div>
+                </div>
+
+                <div class="tab-content" id="tab-prestige">
+                    <div class="prestige-box">
+                        <h3 data-i18n="prestigeTitle">Open Restaurant Chain</h3>
+                        <p data-i18n="prestigeDesc">Reset your progress to earn Gold Sponges. Each Gold Sponge boosts all future production by 10% permanently!</p>
+                        <div class="prestige-stat">
+                            <span data-i18n="currentSponges">Current Gold Sponges:</span>
+                            <span id="sponges-count">0</span>
+                        </div>
+                        <div class="prestige-stat">
+                            <span data-i18n="pendingSponges">Pending Sponges:</span>
+                            <span id="pending-sponges">0</span>
+                        </div>
+                        <button id="prestige-btn" class="prestige-action-btn" data-i18n="prestigeBtn">Franchise Now</button>
+                    </div>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <!-- Stealth View -->
+    <div id="stealth-view" class="stealth-container hidden">
+        <div class="excel-header">
+            <span class="excel-logo">📊</span>
+            <span>Q4_Inventory_Stock_Audit_2026.xlsx - Excel Workspace</span>
+        </div>
+        <div class="excel-toolbar">
+            <span>File</span><span>Home</span><span>Insert</span><span>Page Layout</span><span>Formulas</span><span>Data</span><span>Review</span><span>View</span>
+        </div>
+        <div class="excel-table-wrapper">
+            <table class="excel-table">
+                <thead>
+                    <tr>
+                        <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th>
+                    </tr>
+                    <tr>
+                        <th>SKU Code</th><th>Item Description</th><th>Category</th><th>Qty in Stock</th><th>Unit Cost ($)</th><th>Total Value ($)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>SKU-1002</td><td>Porcelain Dinner Plate 10"</td><td>Ceramics</td><td>1,420</td><td>2.50</td><td>3,550.00</td></tr>
+                    <tr><td>SKU-1005</td><td>Industrial Detergent 25L</td><td>Chemicals</td><td>48</td><td>45.00</td><td>2,160.00</td></tr>
+                    <tr><td>SKU-1011</td><td>Heavy Duty Steel Wool 10pk</td><td>Supplies</td><td>120</td><td>8.20</td><td>984.00</td></tr>
+                    <tr><td>SKU-1088</td><td>Ultrasonic Transducer Spare</td><td>Equipment</td><td>4</td><td>650.00</td><td>2,600.00</td></tr>
+                    <tr><td>SKU-2001</td><td>Dim Sum Bamboo Steamer 8"</td><td>Kitchenware</td><td>650</td><td>4.10</td><td>2,665.00</td></tr>
+                    <tr><td>SKU-2050</td><td>Seafood Live Tank Pump</td><td>Equipment</td><td>2</td><td>1,200.00</td><td>2,400.00</td></tr>
+                    <tr><td>SKU-3010</td><td>Latex Scrubbing Gloves Large</td><td>PPE</td><td>350</td><td>1.80</td><td>630.00</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
